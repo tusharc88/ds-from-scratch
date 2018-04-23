@@ -1,0 +1,20 @@
+{
+  "name": "ds-from-scratch",
+  "version": "1.0.0",
+  "description": "trying my hand at creating ds from scratch in javacsript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tusharc88/ds-from-scratch.git"
+  },
+  "keywords": [],
+  "author": "Tushar Chhibber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tusharc88/ds-from-scratch/issues"
+  },
+  "homepage": "https://github.com/tusharc88/ds-from-scratch#readme"
+}
