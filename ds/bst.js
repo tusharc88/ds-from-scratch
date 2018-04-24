@@ -96,7 +96,35 @@ class BST {
     return searchDataNode(data);
   }
 
-  remove(data) {}
+  remove(data) {
+    const removeNode = (node = this.root, data) => {
+      if (!node) return null;
+      if (node.data === data) {
+        if (node.left === null && node.right === null) return null;
+        else if (node.left === null) {
+          return node.right;
+        } else if (node.right === null) {
+          return node.left;
+        }
+
+        let tempNode = node.right;
+        while (tempNode.left) {
+          tempNode = tempNode.left;
+        }
+        node.data = tempNode.data;
+        node.right = removeNode(node.right, tempNode.data);
+        return node;
+      } else if (node.data < data) {
+        node.right = removeNode(node.right, data);
+        return node;
+      } else {
+        node.left = removeNode(node.left, data);
+        return node;
+      }
+    };
+
+    this.root = removeNode(this.root, data);
+  }
 
   isBalanced() {}
   findMinHeight() {}
