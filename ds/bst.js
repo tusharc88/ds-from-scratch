@@ -126,9 +126,57 @@ class BST {
     this.root = removeNode(this.root, data);
   }
 
-  isBalanced() {}
-  findMinHeight() {}
-  findMaxHeight() {}
+  isBST(node = this.root) {
+    if (node.left && node.left.data > node.data) return false;
+    if (node.right && node.right.data < node.data) return false;
+    if (!isBST(node.right) || !isBST(node.left)) return false;
+
+    return true;
+  }
+
+  findMinHeightOfTree(node = this.root) {
+    if (!node) return 0;
+    const left = findHeightOfTree(node.left);
+    const right = findHeightOfTree(node.right);
+
+    return Math.min(left, right) + 1;
+  }
+
+  findMaxHeightOfTree(node = this.root) {
+    if (!node) return 0;
+    const left = findHeightOfTree(node.left);
+    const right = findHeightOfTree(node.right);
+
+    return Math.max(left, right) + 1;
+  }
+
+  isBalanced() {
+    return findMaxHeightOfTree(this.root) - findMinHeightOfTree(this.root) <= 1;
+  }
+
+  bfs() {
+    if (!node) return null;
+    const result = [];
+
+    const queue = [this.root];
+    while (queue.length > 0) {
+      const node = queue.pop();
+
+      result.push(node.data);
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+
+    return result;
+  }
+
+  lowestCommonAncestorBST(node = this.root, n1, n2) {}
+
+  lowestCommonAncestorBT(node = this.root, n1, n2) {}
 
   inOrder() {
     const result = [];
@@ -136,7 +184,7 @@ class BST {
       if (!node) return null;
       else {
         node.left && traversal(node.left);
-        result.push(node);
+        result.push(node.data);
         node.right && traversal(node.right);
       }
     };
@@ -150,7 +198,7 @@ class BST {
     const traversal = (node = this.root) => {
       if (!node) return null;
       else {
-        result.push(node);
+        result.push(node.data);
         node.left && traversal(node.left);
         node.right && traversal(node.right);
       }
@@ -167,7 +215,7 @@ class BST {
       else {
         node.left && traversal(node.left);
         node.right && traversal(node.right);
-        result.push(node);
+        result.push(node.data);
       }
     };
 

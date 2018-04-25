@@ -11,14 +11,13 @@ class MinHeap {
     this.heap.push(num);
     if (this.heap.length > 2) {
       let index = this.heap.length - 1;
-      let parent = Math.floor(index / 2);
       while (this.heap[index] < this.heap[Math.floor(index / 2)]) {
         if (index > 1) {
           [this.heap[Math.floor(index / 2)], this.heap[index]] = [
             this.heap[index],
             this.heap[Math.floor(index / 2)],
           ];
-          if (parent > 1) {
+          if (Math.floor(index / 2) > 1) {
             index = Math.floor(index / 2);
           } else {
             break;
@@ -36,8 +35,8 @@ class MinHeap {
       if (this.heap.length === 3) {
         if (this.heap[1] > this.heap[2]) {
           [this.heap[1], this.heap[2]] = [this.heap[2], this.heap[1]];
-          return smallest;
         }
+        return smallest;
       }
 
       let i = 1;
