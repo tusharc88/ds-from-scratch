@@ -174,10 +174,6 @@ class BST {
     return result;
   }
 
-  lowestCommonAncestorBST(node = this.root, n1, n2) {}
-
-  lowestCommonAncestorBT(node = this.root, n1, n2) {}
-
   inOrder() {
     const result = [];
     const traversal = (node = this.root) => {
@@ -222,6 +218,10 @@ class BST {
     traversal();
     return result;
   }
+
+  lowestCommonAncestorBST(node = this.root, n1, n2) {}
+
+  lowestCommonAncestorBT(node = this.root, n1, n2) {}
 }
 
 module.exports = { Node, BST };
