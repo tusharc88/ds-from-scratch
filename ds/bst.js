@@ -189,6 +189,29 @@ class BST {
     return result;
   }
 
+  inOrderIterative() {
+    const node = this.root;
+    if (!node) return null;
+    const result = [];
+    const stack = [];
+    stack.push(node.data);
+
+    while (stack.length !== 0) {
+      const curNode = stack[stack.length - 1];
+      if (curNode.left) {
+        stack.push(curNode.left);
+      }
+
+      result.push(stack.pop().data);
+
+      if (curNode.right) {
+        stack.push(curNode.right);
+      }
+    }
+
+    return result;
+  }
+
   preOrder() {
     const result = [];
     const traversal = (node = this.root) => {
